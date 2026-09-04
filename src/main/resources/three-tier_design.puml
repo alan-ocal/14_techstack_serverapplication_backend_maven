@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object domain_layer
+object persistence_layer
+object service_layer
+
+domain_layer --> persistence_layer
+persistence_layer  --> service_layer
+
+
+
+@enduml

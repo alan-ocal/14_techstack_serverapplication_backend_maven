@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+'start campaign
+interface CampaignRepository{
+    findById()
+    save()
+    findAll()
+}
+class InMemoryCampaignRepository implements CampaignRepository
+InMemoryCampaignRepository *- Campaign : use
+'end campaign
+
+'start worker
+interface WorkerRepository{
+    findById()
+    save()
+}
+class InMemoryWorkerRepository implements WorkerRepository
+InMemoryWorkerRepository *- Worker : use
+'end worker
+
+'start task
+interface TaskRepository {
+    findById()
+    save()
+    findAll()
+    findByNameContainingAndAssigneeId()
+}
+
+class InMemoryTaskRepository  implements TaskRepository
+InMemoryTaskRepository *- Task : use
+InMemoryTaskRepository *- Worker : use
+'end task
+@enduml

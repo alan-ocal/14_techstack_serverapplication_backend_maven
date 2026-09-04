@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/class-diagram
+'start campaign
+interface CampaignService{
+    findCampaigns()
+    findById()
+    create()
+    closeCampaign()
+}
+interface CampaignRepository
+class DefaultCampaignService implements CampaignService
+DefaultCampaignService *- CampaignRepository : use
+'end campaign
+
+'start worker
+interface WorkerService{
+    findById()
+    create()
+    updateWorker()
+}
+interface WorkerRepository
+class DefaultWorkerService implements WorkerService{
+   updateFields()
+}
+DefaultWorkerService *- WorkerRepository : use
+'end  worker
+
+'start task
+interface TaskService{
+    searchTasks()
+    findById()
+    create()
+    updateTask()
+    updateStatus()
+    updateAssignee()
+}
+interface TaskRepository
+class DefaultTaskService implements TaskService {
+      updateFields()
+}
+DefaultTaskService *- TaskRepository : use
+'end task
+
+'start reports
+interface ReportsService {
+    generateWorkerReport()
+    generateManagerReport()
+}
+interface ReportBuilder {
+    addWorkersData()
+    addCampaignsData()
+    addTasksData ()
+    addSpecificWorkerData ()
+    obtainReport()
+}
+class DefaultReportsService implements ReportsService
+DefaultReportsService *- TaskService : use
+DefaultReportsService *- WorkerService  : use
+DefaultReportsService *- ReportBuilder : use
+'end reports
+@enduml

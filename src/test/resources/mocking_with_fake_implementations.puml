@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title Mocking With Fake Implementations
+'testing closeCampaign() method from the DefaultCampaignService class
+
+'start Mocking With Fake Implementations
+package persistence.repository.impl{
+   +class FakeCampaignRepository{
+    - mockedCampaign
+         }
+}
+
+package test.java.service{
+    class CampaignServiceFakeRepoUnitTest {
+      void whenClosingACampaign_thenReturnCorrectData_usingFake()
+      void whenClosingACampaignWhichIsNotFound_thenReturnEmpty_usingFake()
+    }
+}
+
+package service.impl {
+    +class DefaultCampaignService {
+    + Optional<Campaign> closeCampaign()
+    }
+}
+
+CampaignServiceFakeRepoUnitTest --> FakeCampaignRepository : use
+CampaignServiceFakeRepoUnitTest --> DefaultCampaignService : use
+
+
+'end Mocking With Fake Implementations
+
+
+@enduml

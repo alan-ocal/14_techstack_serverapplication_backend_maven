@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title Mocking With Mockito
+
+
+note "- mock the CampaignRepository (create a mock for the repository) \n- create the CampaignService (inject repository into the CampaignService through its constructor.)" as N1
+note "three service Unit Tests can be used here " as N2
+
+package <<test.service{
+
+    class CampaignServiceMockitoApiUnitTest,\nCampaignServiceMockLifecycleUnitTest,\nCampaignServiceMockLifecycleMockitoExtensionUnitTest {
+    - CampaignRepository repository ->  @Mock
+    - DefaultCampaignService service -> @InjectMocks
+    openMocks() non-static context as Alternative 1
+    @ExtendWith(MockitoExtension.class) as Alternative 2
+
+     @Test
+     ~ void whenClosingACampaign_thenReturnCorrectData()
+     ~ void whenClosingACampaignWhichIsNotFound_thenReturnEmpty()
+     ~ void whenClosingCampaigns_thenClosesCampaignIfFound()
+    }
+}
+
+package persistence.repository {
+    +interface CampaignRepository {
+      Optional<Campaign> findById( )
+    }
+}
+
+package service {
+    +interface CampaignService{
+    Optional<Campaign> closeCampaign ()
+    }
+}
+
+
+package service.impl {
+    +class DefaultCampaignService{
+    + Optional<Campaign> closeCampaign ()
+    }
+}
+
+CampaignService  <|.. DefaultCampaignService  : implements
+CampaignServiceMockitoApiUnitTest   -->   CampaignRepository  : mocks
+CampaignServiceMockitoApiUnitTest   -->   CampaignService       : creates & validates scenarios
+
+
+'end Mocking With Mockito
+
+
+@enduml

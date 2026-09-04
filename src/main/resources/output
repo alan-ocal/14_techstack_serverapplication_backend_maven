@@ -1,0 +1,23 @@
+
+-- LJU App start
+->  //CREATE
+->  //creating new Campaigns
+-- Saved new Campaign 1: Campaign [id=8219504611276454573, code=C1, name=Campaign 1, description=Campaign 1 Description, closed=false]
+->  //creating new Tasks
+-- Saved new Task 1: Task{id=id=2441479237645127123, name='Task 1', description='Task 1 Description', dueDate=2025-11-29, status=TO_DO,
+                      campaign=Campaign [id=8219504611276454573, code=C1, name=Campaign 1, description=Campaign 1 Description, closed=false], assignee=null}
+
+->  // FIND
+->  // find Campaign by Id
+-- Retrieved Campaign: Campaign [id=8219504611276454573, code=C1, name=Campaign 1, description=Campaign 1 Description, closed=false]
+
+-- Retrieved Campaign's Tasks and Assignee: [Task{id=2441479237645127123, name='Task 1', description='Task 1 Description', dueDate=2025-11-29, status=TO_DO,
+                               campaign=Campaign [id=8219504611276454573, code=C1, name=Campaign 1, description=Campaign 1 Description, closed=false], assignee=null},
+
+                               Task{id=3744734697250005740, name='Task 2', description='Task 2 Description', dueDate=2025-11-24, status=TO_DO,
+                               campaign=Campaign [id=8219504611276454573, code=C1, name=Campaign 1, description=Campaign 1 Description, closed=false],
+
+                               assignee=Worker [id=353836892639214783, email=alan.ocallaghan@gmail.com, firstName=Alan, lastName=O'callaghan]}]
+
+-> // find all Campaigns
+-- Retrieved all (1) existing Campaigns: [Campaign [id=8219504611276454573, code=C1, name=Campaign 1, description=Campaign 1 Description, closed=false]]

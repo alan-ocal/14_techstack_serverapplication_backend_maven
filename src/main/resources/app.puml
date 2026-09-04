@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+' CREATE
+object newCampaign
+object newTask
+object newTask2
+object worker
+
+map APPLICATIONforcreate #99FF99 {
+campaignService 'create' *-> newCampaign
+taskService 'create' *--> newTask
+taskService 'create' *--> newTask2
+workerService 'create' *--> worker
+
+'create Task and add Assignee
+taskService 'updateAssignee' *--> newTask2
+taskService 'updateAssignee' *--> worker
+}
+
+'other fields are ignored
+newTask --> newCampaign  : use
+newTask --> TaskStatus : use
+newTask --> Worker : use
+
+newTask2 --> newCampaign  : use
+newTask2 --> TaskStatus : use
+newTask2 --> Worker : use
+
+' FIND
+object existingCampaign
+
+
+map APPLICATIONforfind #99FF99{
+campaignService 'findById' *->  newCampaign
+}
+existingCampaign --> newCampaign  : use
+
+@enduml

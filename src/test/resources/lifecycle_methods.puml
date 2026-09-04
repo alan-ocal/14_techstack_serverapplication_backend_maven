@@ -1,0 +1,16 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+
+title Running the test classes
+
+* LifecycleMethodsAndResourcesHandlingUnitTest
+** static
+*** @BeforeAll
+*** @AfterAll
+
+** non-static
+*** @BeforeEach
+*** @AfterEach
+
+@endmindmap

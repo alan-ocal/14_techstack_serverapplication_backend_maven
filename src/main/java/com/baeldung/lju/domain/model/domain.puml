@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Worker
+class Task
+class Campaign
+enum TaskStatus
+
+/' one-to-many relationship from Campaign to Task
+  Zero or One relationship from Worker  to Task '/
+Campaign "1" *-- "n" Task
+Worker "0..1" *-- "n" Task
+TaskStatus--> Task
+
+class Worker {}
+class Task {}
+class Campaign {}
+enum TaskStatus {
+TO_DO
+IN_PROGRESS
+ON_HOLD
+DONE
+}
+
+@enduml
